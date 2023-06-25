@@ -2,11 +2,6 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-/*    
-
-- É permitido criar um post sem um vídeo nele.
-
-*/
 
 public class PostVideo implements Postavel {
     private Video video;
@@ -14,31 +9,30 @@ public class PostVideo implements Postavel {
     private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
     private int qtde_fixados = 0;
 
-/*----------------------------------------------------------------------------*/
-
     public PostVideo() {}
 
-    public void adicionaVideo(Video video) {
-        this.video = video;
+/*----------------------------------------------------------------------------*/
+
+    public boolean adicionaVideo(Video video) {
+        if(video != null) {
+            this.video = video;
+            return true;
+        }
+        else return false;
     }
 
 /*----------------------------------------------------------------------------*/
 
-    /*
-        Verifica se há um vídeo associado, caso positivo atualiza a data da
-        postagem e retorna TRUE.
-        Caso não haja vídeo, retorna um estado de erro
-    */
     @Override
     public boolean posta() {
         if(this.video != null) {
             this.data_postagem = LocalDateTime.now();
             return true;
         }
-        else throw new NullPointerException("A postagem não contém um vídeo");
+        else throw new NullPointerException("\033[31mA postagem não contém um vídeo\033[m");
     }
 
-    /* Adicionei o parâmetro da string | Ver "Recurso.java" */
+    /* Adicionei o parâmetro da string | Ver "Postavel.java" */
     @Override
     public boolean comenta(String texto) {
         if(texto == null) {

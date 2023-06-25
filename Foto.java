@@ -1,21 +1,22 @@
 public class Foto extends Recurso {
     private String resolucao;
 
+    public Foto(String url) {
+        if(validaUrlRecurso(url)) {
+            this.url_recurso = url;
+            Recurso.prox_ID += 1;
+        }
+        else throw new IllegalArgumentException("\033[31mURL da FOTO é inválida.\033[m");
+    }
+    
+/*----------------------------------------------------------------------------*/
+    
     public void setResolucao(String resolucao) { this.resolucao = resolucao; }
 
 /*----------------------------------------------------------------------------*/
 
-    public Foto(String url) {
-        if(validaUrlRecurso(url));
-        throw new NullPointerException("\033[31mURL da foto é inválida.\033[m");
-    }
-
-/*----------------------------------------------------------------------------*/
-
-    public boolean equals(Foto foto) {
-        if(foto.resolucao.equals(this.resolucao)
-        && foto.url_recurso.equals(this.url_recurso)) return true;
-
+    public boolean equals(int id) {
+        if(this.ID == id) return true;
         else return false;
     }
 

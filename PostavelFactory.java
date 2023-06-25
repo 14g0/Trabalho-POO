@@ -1,13 +1,20 @@
 public class PostavelFactory {
 
-    public Postavel createPostavel(String type) {
+    public static Postavel createPostavel(String type) {
+        Postavel  post;
 
-        if(type.equals("POSTFOTO")) {
-            return new PostFoto();
+        switch(type) {
+            case "POSTFOTO":
+                System.out.println("criei uma foto");
+                return new PostFoto();
+
+            case "POSTVIDEO":
+                System.out.println("criei um video");
+                return new PostVideo();
+
+            default:                
+                throw new IllegalArgumentException("\033[mArgumento desconhecido\033[m");
         }
-        else if (type.equals("POSTVIDEO")) {
-            return new PostVideo();
-        }
-        else return null;
+
     }
 }

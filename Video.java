@@ -2,16 +2,19 @@
 public class Video extends Recurso {
     private int frame_rate, duracao;
 
-    public void setDuracao(int duracao) { this.duracao = duracao; }
-
-    public void setFram_rate(int frame_rate) { this.frame_rate = frame_rate; }
+    public Video(String url) {
+        if(this.validaUrlRecurso(url)) {
+            this.url_recurso = url;
+            Recurso.prox_ID += 1;
+        }
+        else throw new IllegalArgumentException("\033[31mURL do VIDEO é inválida.\033[m");
+    }
 
 /*----------------------------------------------------------------------------*/
 
-    public Video(String url) {
-        if(validaUrlRecurso(url));
-        throw new NullPointerException("\033[31mURL do video é inválida.\033[m");
-    }
+    public void setDuracao(int duracao) { this.duracao = duracao; }
+
+    public void setFram_rate(int frame_rate) { this.frame_rate = frame_rate; }
 
 /*----------------------------------------------------------------------------*/
 

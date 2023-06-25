@@ -8,15 +8,14 @@ public class PostFoto implements Postavel{
     private ArrayList<Foto> fotos = new ArrayList<Foto>();
     private String localizacao;
     private LocalDateTime data_postagem;
-    // Teve quer ser colocado como ArrayList supondo
-    private ArrayList<Comentario> listaComentarios = new ArrayList<Comentario>();
+    private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
+
+    public PostFoto() {}
 
 /*----------------------------------------------------------------------------*/
 
-    public void PostFoto() {}
 
     public boolean adicionaFoto() {
-        return true;
     }
 
     public boolean removeFoto(Foto foto) {
@@ -31,8 +30,15 @@ public class PostFoto implements Postavel{
         return true;
     }
 
-    @Override
+   @Override
     public boolean comenta(String texto) {
-        return true;
+        if(texto == null) {
+            System.out.println("\033[31mInsira texto no comentário.\033[m");
+            return false;
+        }
+        else {
+            this.lista_comentarios.add(new Comentario(texto));
+            return true;
+        }
     }
 }
