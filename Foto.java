@@ -15,13 +15,6 @@ public class Foto extends Recurso {
 
 /*----------------------------------------------------------------------------*/
 
-    public boolean equals(int id) {
-        if(this.ID == id) return true;
-        else return false;
-    }
-
-/*----------------------------------------------------------------------------*/
-
     @Override
     public boolean validaUrlRecurso(String url) {
         url = url.substring(url.length()-4, url.length());

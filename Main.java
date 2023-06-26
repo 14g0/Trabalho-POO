@@ -3,8 +3,7 @@ public class Main {
         Foto foto = new Foto("iago.png");
         Video video = new Video("iago.png");
 
-        PostFoto postFoto = null;
-        PostVideo postVideo = null;
+        
         
     }
 }

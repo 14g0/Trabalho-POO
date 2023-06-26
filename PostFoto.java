@@ -14,20 +14,32 @@ public class PostFoto implements Postavel{
 
 /*----------------------------------------------------------------------------*/
 
-
-    public boolean adicionaFoto() {
+    public boolean adicionaFoto(Foto foto) {
+        if(foto != null) {
+            fotos.add(foto);
+            qtde_fotos += 1;
+            return true;
+        }
+        else return false;
     }
 
-    public boolean removeFoto(Foto foto) {
-
-        return true;
+    public boolean removeFoto(int posicao) {
+        if(fotos.remove(posicao) != null) {
+            qtde_fotos -= 1;
+            return true;
+        }
+        else return false;
     }
 
 /*----------------------------------------------------------------------------*/
 
     @Override
     public boolean posta() {
-        return true;
+        if((1 <= qtde_fotos) && (qtde_fotos <= 10)) {
+            this.data_postagem = LocalDateTime.now();
+            return true;
+        }
+        else return false;
     }
 
    @Override
