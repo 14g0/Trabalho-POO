@@ -1,4 +1,5 @@
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -14,18 +15,22 @@ public class PostFoto implements Postavel{
 
 /*----------------------------------------------------------------------------*/
 
+    public void setLocalizacao(String localizacao) { this.localizacao = localizacao; }
+
+/*----------------------------------------------------------------------------*/
+
     public boolean adicionaFoto(Foto foto) {
         if(foto != null) {
-            fotos.add(foto);
-            qtde_fotos += 1;
+            this.fotos.add(foto);
+            this.qtde_fotos += 1;
             return true;
         }
         else return false;
     }
 
     public boolean removeFoto(int posicao) {
-        if(fotos.remove(posicao) != null) {
-            qtde_fotos -= 1;
+        if((this.fotos.remove(posicao) != null)) {
+            this.qtde_fotos -= 1;
             return true;
         }
         else return false;
@@ -35,7 +40,7 @@ public class PostFoto implements Postavel{
 
     @Override
     public boolean posta() {
-        if((1 <= qtde_fotos) && (qtde_fotos <= 10)) {
+        if((1 <= this.qtde_fotos) && (this.qtde_fotos < 11)) {
             this.data_postagem = LocalDateTime.now();
             return true;
         }
@@ -51,6 +56,29 @@ public class PostFoto implements Postavel{
         else {
             this.lista_comentarios.add(new Comentario(texto));
             return true;
+        }
+    }
+
+    @Override
+    public void printPost() {
+        for(Foto pic : this.fotos) {
+            for(int i=0 ; i<pic.url_recurso.length()+3 ; i+=1) {
+                System.out.printf("-");
+            }
+            System.out.printf("\n| %s |\n", pic.url_recurso);
+            for(int i=0 ; i<pic.url_recurso.length()+3 ; i+=1) {
+                System.out.printf("-");
+            }
+        }
+        for(Comentario comment : this.lista_comentarios) {
+            for(int i=0 ; i<comment.getTexto().length()+3 ; i+=1) {
+                System.out.printf("\033[33m-");
+            }
+            System.out.printf("\n|\033[m %s \033[33m|\n", comment.getTexto());
+            for(int i=0 ; i<comment.getTexto().length()+3 ; i+=1) {
+                System.out.printf("-");
+            }
+            System.out.println("\033[m");
         }
     }
 }

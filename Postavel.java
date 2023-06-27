@@ -1,4 +1,5 @@
 
+
 public interface Postavel {
     public boolean posta();
 
@@ -8,4 +9,6 @@ public interface Postavel {
         que é adicionado assim que se cria, no meu construtor.
     */
     public boolean comenta(String texto);
+    
+    public void printPost();
 }

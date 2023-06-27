@@ -1,4 +1,5 @@
 
+
 import java.time.LocalDateTime;
 
 public class Comentario {
@@ -6,6 +7,8 @@ public class Comentario {
     private boolean fixado;
     private int tamanho;
     private String texto;
+
+    public String getTexto() { return texto; }
 
     public void setFixado(boolean fixado) { this.fixado = fixado; }
 

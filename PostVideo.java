@@ -1,4 +1,5 @@
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -42,6 +43,17 @@ public class PostVideo implements Postavel {
         else {
             this.lista_comentarios.add(new Comentario(texto));
             return true;
+        }
+    }
+
+    @Override
+    public void printPost() {
+        for(int i=0 ; i<this.video.url_recurso.length()+4 ; i+=1) {
+            System.out.printf("-");
+        }
+        System.out.printf("\n| %s |\n", this.video.url_recurso);
+        for(int i=0 ; i<this.video.url_recurso.length()+4 ; i+=1) {
+            System.out.printf("-");
         }
     }
 }
