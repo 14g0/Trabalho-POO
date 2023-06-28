@@ -1,0 +1,10 @@
+Teste 1 {
+    - É pra usar o método post ou só criar a postagem pela
+    factory como foi dito ?
+
+    - 
+}
+
+Teste 2 {
+    - Devo usar o método post ou não ?
+}

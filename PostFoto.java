@@ -8,12 +8,14 @@ public class PostFoto implements Postavel{
     private int qtde_fotos = 0, qtde_fixados = 0;
     private ArrayList<Foto> fotos = new ArrayList<Foto>();
     private String localizacao;
-    private LocalDateTime data_postagem;
+    private LocalDateTime data_postagem = null;
     private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
 
     public PostFoto() {}
 
 /*----------------------------------------------------------------------------*/
+
+    public int getQtde_fotos() { return qtde_fotos; }
 
     public void setLocalizacao(String localizacao) { this.localizacao = localizacao; }
 
@@ -40,11 +42,11 @@ public class PostFoto implements Postavel{
 
     @Override
     public boolean posta() {
-        if((1 <= this.qtde_fotos) && (this.qtde_fotos < 11)) {
+        if((0 < this.qtde_fotos) && (this.qtde_fotos < 11)) {
             this.data_postagem = LocalDateTime.now();
             return true;
         }
-        else return false;
+        else throw new IndexOutOfBoundsException("\033[31mQuantidade de fotos inválida.\033[m");
     }
 
    @Override
@@ -61,15 +63,19 @@ public class PostFoto implements Postavel{
 
     @Override
     public void printPost() {
+        if(this.data_postagem != null) System.out.println(this.data_postagem);
+
         for(Foto pic : this.fotos) {
-            for(int i=0 ; i<pic.url_recurso.length()+3 ; i+=1) {
+            for(int i=0 ; i<pic.url_recurso.length()+4 ; i+=1) {
                 System.out.printf("-");
             }
             System.out.printf("\n| %s |\n", pic.url_recurso);
-            for(int i=0 ; i<pic.url_recurso.length()+3 ; i+=1) {
+            for(int i=0 ; i<pic.url_recurso.length()+4 ; i+=1) {
                 System.out.printf("-");
             }
+            System.out.println("");
         }
+        
         for(Comentario comment : this.lista_comentarios) {
             for(int i=0 ; i<comment.getTexto().length()+3 ; i+=1) {
                 System.out.printf("\033[33m-");

@@ -6,7 +6,7 @@ public class Foto extends Recurso {
             this.url_recurso = url;
             Recurso.prox_ID += 1;
         }
-        else throw new IllegalArgumentException("\033[31mURL da FOTO é inválida.\033[m");
+        else throw new IllegalArgumentException("\033[31mURL("+ url +") é inválida para um vídeo.\033[m");
     }
     
 /*----------------------------------------------------------------------------*/

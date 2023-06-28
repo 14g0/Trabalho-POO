@@ -1,8 +1,5 @@
-
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 
 public class PostVideo implements Postavel {
     private Video video;
@@ -48,12 +45,26 @@ public class PostVideo implements Postavel {
 
     @Override
     public void printPost() {
+        if(this.data_postagem != null) System.out.println(this.data_postagem);
+
         for(int i=0 ; i<this.video.url_recurso.length()+4 ; i+=1) {
             System.out.printf("-");
         }
         System.out.printf("\n| %s |\n", this.video.url_recurso);
         for(int i=0 ; i<this.video.url_recurso.length()+4 ; i+=1) {
             System.out.printf("-");
+        }
+        System.out.println("\033[m");
+
+        for(Comentario comment : this.lista_comentarios) {
+            for(int i=0 ; i<comment.getTexto().length()+3 ; i+=1) {
+                System.out.printf("\033[33m-");
+            }
+            System.out.printf("\n|\033[m %s \033[33m|\n", comment.getTexto());
+            for(int i=0 ; i<comment.getTexto().length()+3 ; i+=1) {
+                System.out.printf("-");
+            }
+            System.out.println("\033[m");
         }
     }
 }
