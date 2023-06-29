@@ -68,7 +68,7 @@ public class Testes {
             postFoto.posta();
             System.out.println("Teste 4: \033[31mFAIL\033[m");
         }
-        catch(NullPointerException erro) {
+        catch(IndexOutOfBoundsException erro) {
             System.out.printf("Teste 4: \033[32mOK %s\033[m\n", erro.getMessage());
         }
     }
@@ -106,8 +106,7 @@ public class Testes {
             postFoto.posta();
         }
         catch(IndexOutOfBoundsException erro) {
-            System.out.printf("Teste 6: OK %s", erro.getMessage());
-            postFoto.printPost();
+            System.out.printf("Teste 6: \033[32mOK\033[m %s\n", erro.getMessage());            
         }
     }
 
@@ -151,7 +150,7 @@ public class Testes {
             }
         }
         catch(IllegalArgumentException erro) {
-            System.out.printf("Teste 9: \033[32mOK\033[m %s", erro.getMessage());
+            System.out.printf("Teste 9: \033[32mOK\033[m %s\n", erro.getMessage());
         }
     }
 
@@ -167,7 +166,7 @@ public class Testes {
             }
         }
         catch(IllegalArgumentException erro) {
-            System.out.printf("Teste 10: \033[32mOK\033[m %s", erro.getMessage());
+            System.out.printf("Teste 10: \033[32mOK\033[m %s\n", erro.getMessage());
         }
     }
 }

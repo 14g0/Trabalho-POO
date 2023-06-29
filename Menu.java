@@ -1,6 +1,6 @@
 public class Menu {
     
-    public static void limpaTerminal() {
+    public static void limparTerminal() {
         // Código ANSI(?) para limpar o terminal.
         System.out.println("\033\143");
     }
